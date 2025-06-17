@@ -6,19 +6,20 @@ public class Bicicleta {
     String marca;
     String tamanhoDoAro;
     double aluguelBase;
-    double aluguelDia;
-    boolean estaAlugada;
+    double aluguelDia=10;
+    boolean seEstaAlugada;
     double aluguelTotal;
 
 
-    public Bicicleta(int id, String modelo, String marca, String tamanhoDoAro, double aluguelBase, double aluguelDia, boolean estaAlugada) {
+    public Bicicleta(int id, String modelo, String marca, String tamanhoDoAro, double aluguelBase, double aluguelDia, boolean seEstaAlugada, double aluguelTotal) {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
         this.tamanhoDoAro = tamanhoDoAro;
         this.aluguelBase = aluguelBase;
         this.aluguelDia = aluguelDia;
-        this.estaAlugada = estaAlugada;
+        this.seEstaAlugada = seEstaAlugada;
+        this.aluguelTotal = aluguelTotal;
     }
 
     public int getId() {
@@ -69,22 +70,21 @@ public class Bicicleta {
         this.aluguelDia = aluguelDia;
     }
 
-    public boolean isEstaAlugada() {
-        return estaAlugada;
+    public boolean isSeEstaAlugada() {
+        return seEstaAlugada;
     }
 
-    public void setEstaAlugada(boolean estaAlugada) {
-        this.estaAlugada = estaAlugada;
+    public void setSeEstaAlugada(boolean seEstaAlugada) {
+        this.seEstaAlugada = seEstaAlugada;
     }
 
-
-    public void calculaAluguel(double aluguelBase, double aluguelDia) {
-
-        aluguelTotal=aluguelBase+aluguelDia;
-
+    public double getAluguelTotal() {
+        return aluguelTotal;
     }
 
-
+    public void setAluguelTotal(double aluguelTotal) {
+        this.aluguelTotal = aluguelTotal;
+    }
 
     @Override
     public String toString() {
@@ -95,9 +95,9 @@ public class Bicicleta {
                 ", tamanhoDoAro='" + tamanhoDoAro + '\'' +
                 ", aluguelBase=" + aluguelBase +
                 ", aluguelDia=" + aluguelDia +
-                ", estaAlugada=" + estaAlugada +
+                ", seEstaAlugada=" + seEstaAlugada +
+                ", aluguelTotal=" + aluguelTotal +
                 '}';
     }
-
 
 }
