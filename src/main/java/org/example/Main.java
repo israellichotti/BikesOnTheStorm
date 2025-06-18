@@ -16,7 +16,7 @@ public class Main {
         connectDatabase();
         createTableIfNeeded();
         SwingUtilities.invokeLater(() -> {
-            showMainMenu();
+            mostrarMainMenu();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 600);
             frame.setLocationRelativeTo(null);
@@ -51,7 +51,7 @@ public class Main {
         }
     }
 
-    private static void showAdicionarBicicleta() {
+    private static void mostrarAdicionarBicicleta() {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(8, 2));
 
@@ -109,7 +109,7 @@ public class Main {
                 pstmt.executeUpdate();
 
                 JOptionPane.showMessageDialog(frame, "Bicicleta adicionada com sucesso!");
-                showMainMenu();
+                mostrarMainMenu();
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(frame, "Tamanho do aro e aluguel base devem ser números.");
             } catch (SQLException ex) {
@@ -117,13 +117,13 @@ public class Main {
             }
         });
 
-        btnVoltar.addActionListener(e -> showMainMenu());
+        btnVoltar.addActionListener(e -> mostrarMainMenu());
 
         frame.revalidate();
         frame.repaint();
     }
 
-    private static void showMainMenu() {
+    private static void mostrarMainMenu() {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(5, 1));
 
@@ -139,10 +139,10 @@ public class Main {
         frame.add(btnAlugarBicicleta);
         frame.add(btnSair);
 
-        btnAdicionarBicicleta.addActionListener(e -> showAdicionarBicicleta());
-        btnListarBicicletas.addActionListener(e -> showListarBicicletas());
-        btnExcluirBicicleta.addActionListener(e -> showExcluirBicicleta());
-        btnAlugarBicicleta.addActionListener(e -> showBuscarBicicletaParaAluguel());
+        btnAdicionarBicicleta.addActionListener(e -> mostrarAdicionarBicicleta());
+        btnListarBicicletas.addActionListener(e -> mostrarListarBicicletas());
+        btnExcluirBicicleta.addActionListener(e -> mostrarExcluirBicicleta());
+        btnAlugarBicicleta.addActionListener(e -> mostrarBuscarBicicletaParaAluguel());
         btnSair.addActionListener(e -> System.exit(0));
 
         frame.revalidate();
@@ -152,7 +152,7 @@ public class Main {
 
 
 
-    private static void showListarBicicletas() {
+    private static void mostrarListarBicicletas() {
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
 
@@ -185,7 +185,7 @@ public class Main {
             JOptionPane.showMessageDialog(frame, "Erro ao listar bicicletas: " + e.getMessage());
         }
 
-        btnVoltar.addActionListener(e -> showMainMenu());
+        btnVoltar.addActionListener(e -> mostrarMainMenu());
 
         frame.revalidate();
         frame.repaint();
@@ -194,7 +194,7 @@ public class Main {
 
 
 
-    private static void showExcluirBicicleta() {
+    private static void mostrarExcluirBicicleta() {
         frame.getContentPane().removeAll();
         frame.setLayout(new BorderLayout());
 
@@ -252,7 +252,7 @@ public class Main {
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {
                     JOptionPane.showMessageDialog(frame, "Bicicleta excluída com sucesso.");
-                    showExcluirBicicleta(); // Atualiza a lista
+                    mostrarExcluirBicicleta(); // Atualiza a lista
                 } else {
                     JOptionPane.showMessageDialog(frame, "Bicicleta com ID " + id + " não encontrada.");
                 }
@@ -261,7 +261,7 @@ public class Main {
             }
         });
 
-        btnVoltar.addActionListener(e -> showMainMenu());
+        btnVoltar.addActionListener(e -> mostrarMainMenu());
 
         frame.revalidate();
         frame.repaint();
@@ -270,13 +270,13 @@ public class Main {
 
 
 
-    private static void showBuscarBicicletaParaAluguel() {
+    private static void mostrarBuscarBicicletaParaAluguel() {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(4, 1));
 
-        JLabel lblId = new JLabel("Digite o ID da bicicleta que deseja alugar (001 a 999):");
+        JLabel lblId = new JLabel("Digite o ID da bicicleta que deseja alugar (entre 001 a 999):");
         JTextField campoId = new JTextField();
-        JButton btnProximo = new JButton("Próximo");
+        JButton btnProximo = new JButton("Proximo");
         JButton btnVoltar = new JButton("Voltar");
 
         frame.add(lblId);
@@ -304,7 +304,7 @@ public class Main {
                     double aluguelBase = rs.getDouble("aluguelBase");
                     double aluguelDia = rs.getDouble("aluguelDia");
 
-                    showDadosBicicletaParaAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia);
+                    mostrarDadosBicicletaParaAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Bicicleta não encontrada.");
                 }
@@ -313,7 +313,7 @@ public class Main {
             }
         });
 
-        btnVoltar.addActionListener(e -> showMainMenu());
+        btnVoltar.addActionListener(e -> mostrarMainMenu());
 
         frame.revalidate();
         frame.repaint();
@@ -322,7 +322,7 @@ public class Main {
 
 
 
-    private static void showDadosBicicletaParaAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia) {
+    private static void mostrarDadosBicicletaParaAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia) {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(9, 1));
 
@@ -349,17 +349,17 @@ public class Main {
             try {
                 int dias = Integer.parseInt(textoDias);
                 if (dias < 1 || dias > 28) {
-                    JOptionPane.showMessageDialog(frame, "Valor inválido. Digite um número entre 1 e 28.");
+                    JOptionPane.showMessageDialog(frame, "Valor invalido. So pode digitar um número entre 1 e 28.");
                     return;
                 }
 
-                showResumoParcialAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias);
+                mostrarResumoParcialAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(frame, "Valor inválido. Digite um número inteiro válido.");
+                JOptionPane.showMessageDialog(frame, "Valor inválido. Digite um número inteiro valido.");
             }
         });
 
-        btnVoltar.addActionListener(e -> showBuscarBicicletaParaAluguel());
+        btnVoltar.addActionListener(e -> mostrarBuscarBicicletaParaAluguel());
 
         frame.revalidate();
         frame.repaint();
@@ -368,7 +368,7 @@ public class Main {
 
 
 
-    private static void showResumoParcialAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias) {
+    private static void mostrarResumoParcialAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias) {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(10, 1));
 
@@ -388,8 +388,8 @@ public class Main {
         frame.add(btnProximo);
         frame.add(btnVoltar);
 
-        btnProximo.addActionListener(e -> showFormularioCliente(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias, aluguelTotal));
-        btnVoltar.addActionListener(e -> showDadosBicicletaParaAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia));
+        btnProximo.addActionListener(e -> mostrarFormularioCliente(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias, aluguelTotal));
+        btnVoltar.addActionListener(e -> mostrarDadosBicicletaParaAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia));
 
         frame.revalidate();
         frame.repaint();
@@ -398,7 +398,7 @@ public class Main {
 
 
 
-    private static void showFormularioCliente(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias, double aluguelTotal) {
+    private static void mostrarFormularioCliente(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias, double aluguelTotal) {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(7, 2));
 
@@ -429,10 +429,10 @@ public class Main {
                 return;
             }
 
-            showResumoFinalAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias, aluguelTotal, nome, cpf, telefone);
+            mostrarResumoFinalAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias, aluguelTotal, nome, cpf, telefone);
         });
 
-        btnVoltar.addActionListener(e -> showResumoParcialAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias));
+        btnVoltar.addActionListener(e -> mostrarResumoParcialAluguel(id, modelo, marca, tamanhoAro, aluguelBase, aluguelDia, dias));
 
         frame.revalidate();
         frame.repaint();
@@ -441,11 +441,12 @@ public class Main {
 
 
 
-    private static void showResumoFinalAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias, double aluguelTotal, String nome, String cpf, String telefone) {
+    private static void mostrarResumoFinalAluguel(String id, String modelo, String marca, double tamanhoAro, double aluguelBase, double aluguelDia, int dias, double aluguelTotal, String nome, String cpf, String telefone) {
         frame.getContentPane().removeAll();
         frame.setLayout(new GridLayout(14, 1));
 
         frame.add(new JLabel("Resumo do Aluguel"));
+
         frame.add(new JLabel("---- Bicicleta ----"));
         frame.add(new JLabel("ID: " + id));
         frame.add(new JLabel("Modelo: " + modelo));
@@ -464,9 +465,19 @@ public class Main {
         JButton btnImprimir = new JButton("Imprimir");
         JButton btnVoltarMenu = new JButton("Voltar Menu");
 
-        btnImprimir.addActionListener(e -> JOptionPane.showMessageDialog(frame, "Simulando a impressao"));
+        btnImprimir.addActionListener(e -> {
+            try {
+                PreparedStatement pstmt = conn.prepareStatement("UPDATE bicicletas SET alugada = 1 WHERE id = ?");
+                pstmt.setString(1, id);
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(frame, "Simulando a impressão :D");
+                mostrarMainMenu();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(frame, "Erro ao atualizar status de aluguel: " + ex.getMessage());
+            }
+        });
 
-        btnVoltarMenu.addActionListener(e -> showMainMenu());
+        btnVoltarMenu.addActionListener(e -> mostrarMainMenu());
 
         frame.add(btnImprimir);
         frame.add(btnVoltarMenu);
