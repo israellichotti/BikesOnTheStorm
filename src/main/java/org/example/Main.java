@@ -447,7 +447,6 @@ public class Main {
 
         frame.add(new JLabel("Resumo do Aluguel"));
 
-        frame.add(new JLabel("---- Bicicleta ----"));
         frame.add(new JLabel("ID: " + id));
         frame.add(new JLabel("Modelo: " + modelo));
         frame.add(new JLabel("Marca: " + marca));
@@ -457,10 +456,10 @@ public class Main {
         frame.add(new JLabel("Dias de Aluguel: " + dias));
         frame.add(new JLabel("Total: " + aluguelTotal));
 
-        frame.add(new JLabel("---- Cliente ----"));
-        frame.add(new JLabel("Nome: " + nome));
-        frame.add(new JLabel("CPF: " + cpf));
-        frame.add(new JLabel("Telefone: " + telefone));
+
+        frame.add(new JLabel("Nome do Cliente: " + nome));
+        frame.add(new JLabel("CPF do Cliente: " + cpf));
+        frame.add(new JLabel("Telefone do Cliente: " + telefone));
 
         JButton btnImprimir = new JButton("Imprimir");
         JButton btnVoltarMenu = new JButton("Voltar Menu");
