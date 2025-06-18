@@ -4,18 +4,18 @@ public class Bicicleta {
     int id;
     String modelo;
     String marca;
-    String tamanhoDoAro;
+    String tamanhoAro;
     double aluguelBase;
     double aluguelDia=10;
     boolean seEstaAlugada;
     double aluguelTotal;
 
 
-    public Bicicleta(int id, String modelo, String marca, String tamanhoDoAro, double aluguelBase, double aluguelDia, boolean seEstaAlugada, double aluguelTotal) {
+    public Bicicleta(int id, String modelo, String marca, String tamanhoAro, double aluguelBase, double aluguelDia, boolean seEstaAlugada, double aluguelTotal) {
         this.id = id;
         this.modelo = modelo;
         this.marca = marca;
-        this.tamanhoDoAro = tamanhoDoAro;
+        this.tamanhoAro = tamanhoAro;
         this.aluguelBase = aluguelBase;
         this.aluguelDia = aluguelDia;
         this.seEstaAlugada = seEstaAlugada;
@@ -46,12 +46,12 @@ public class Bicicleta {
         this.marca = marca;
     }
 
-    public String getTamanhoDoAro() {
-        return tamanhoDoAro;
+    public String getTamanhoAro() {
+        return tamanhoAro;
     }
 
-    public void setTamanhoDoAro(String tamanhoDoAro) {
-        this.tamanhoDoAro = tamanhoDoAro;
+    public void setTamanhoAro(String tamanhoAro) {
+        this.tamanhoAro = tamanhoAro;
     }
 
     public double getAluguelBase() {
@@ -92,7 +92,7 @@ public class Bicicleta {
                 "id=" + id +
                 ", modelo='" + modelo + '\'' +
                 ", marca='" + marca + '\'' +
-                ", tamanhoDoAro='" + tamanhoDoAro + '\'' +
+                ", tamanhoAro='" + tamanhoAro + '\'' +
                 ", aluguelBase=" + aluguelBase +
                 ", aluguelDia=" + aluguelDia +
                 ", seEstaAlugada=" + seEstaAlugada +
